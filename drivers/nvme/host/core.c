@@ -2105,7 +2105,7 @@ static const struct block_device_operations nvme_bdev_ops = {
 static int nvme_wait_ready(struct nvme_ctrl *ctrl, u64 cap, bool enabled)
 {
 	unsigned long timeout =
-		((NVME_CAP_TIMEOUT(cap) + 1) * HZ / 2) + jiffies;
+		((NVME_CAP_TIMEOUT(cap) + 1) * HZ) + jiffies;
 	u32 csts, bit = enabled ? NVME_CSTS_RDY : 0;
 	int ret;
 
